@@ -14,7 +14,7 @@ public class Logging {
 		
 		
 		try {
-			fileHandler = new FileHandler("server.log");
+			fileHandler = new FileHandler("server.log",true);
 			logger.addHandler(fileHandler);
 	        SimpleFormatter formatter = new SimpleFormatter();  
 	        fileHandler.setFormatter(formatter);  
