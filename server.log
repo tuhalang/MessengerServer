@@ -1,0 +1,6 @@
+Jul 04, 2019 10:28:20 AM com.messenger.controller.HomeController main
+INFO: Homecontroller: Binding to port: 3380
+Jul 04, 2019 10:28:20 AM com.messenger.controller.HomeController main
+INFO: HomeController: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3380]
+Jul 04, 2019 10:28:20 AM com.messenger.controller.HomeController main
+INFO: HomeController: Waiting for client ...
