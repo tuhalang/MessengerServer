@@ -1,0 +1,18 @@
+Jul 05, 2019 4:58:18 PM com.messenger.controller.HomeController main
+INFO: Homecontroller: Binding to port: 3308
+Jul 05, 2019 4:58:18 PM com.messenger.controller.HomeController main
+INFO: HomeController: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 05, 2019 4:58:18 PM com.messenger.controller.HomeController main
+INFO: HomeController: Waiting for client ...
+Jul 05, 2019 4:58:56 PM com.messenger.controller.HomeController main
+INFO: Homecontroller: Binding to port: 3308
+Jul 05, 2019 4:58:56 PM com.messenger.controller.HomeController main
+INFO: HomeController: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 05, 2019 4:58:56 PM com.messenger.controller.HomeController main
+INFO: HomeController: Waiting for client ...
+Jul 05, 2019 5:19:32 PM com.messenger.controller.HomeController main
+INFO: Homecontroller: Binding to port: 3308
+Jul 05, 2019 5:19:32 PM com.messenger.controller.HomeController main
+INFO: HomeController: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 05, 2019 5:19:32 PM com.messenger.controller.HomeController main
+INFO: HomeController: Waiting for client ...

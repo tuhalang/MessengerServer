@@ -1,0 +1,6 @@
+com/messenger/dao/CommonDAO.class
+com/messenger/dao/MessageDAO.class
+com/messenger/dao/UserDAO.class
+com/messenger/controller/HomeController.class
+com/messenger/logger/Logging.class
+com/messenger/controller/WorkerThread.class
