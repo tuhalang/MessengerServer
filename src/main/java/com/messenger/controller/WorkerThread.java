@@ -1,18 +1,71 @@
 package com.messenger.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.logging.Logger;
 
-public class WorkerThread extends Thread{
+import com.messenger.logger.Logging;
+
+public class WorkerThread extends Thread {
 
 	private Socket socket;
-	
+
 	public WorkerThread(Socket socket) {
 		this.socket = socket;
 	}
-	
+
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		super.run();
+		Logger logger = Logging.getLogger();
+		BufferedReader bufferedReader = null;
+		InputStreamReader inputStreamReader = null;
+		LinkedList<String> messages = new LinkedList<String>();
+		try {
+			while (true) {
+				inputStreamReader = new InputStreamReader(this.socket.getInputStream());
+				bufferedReader = new BufferedReader(inputStreamReader);
+				String content = bufferedReader.readLine();
+				if (content != null) {
+					messages.push(content);
+				}
+				while(messages.size() > 0) {
+					logger.info("message from " + socket + " is : " + messages.pop());
+				}
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+		} catch (IOException e) {
+			logger.severe("WorkerThread: " + e.getMessage());
+		} finally {
+			if(bufferedReader != null) {
+				try {
+					bufferedReader.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			
+			if(inputStreamReader != null) {
+				try {
+					inputStreamReader.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			
+			if(socket != null) {
+				try {
+					socket.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+		}
 	}
 }

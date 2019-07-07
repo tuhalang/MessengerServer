@@ -19,7 +19,9 @@ public class HomeController {
 
 	
 	public static HashMap<Long, WorkerThread> users = new HashMap<Long, WorkerThread>();
+	
 	static int numOfThread;
+	
 	static int serverPort;
 	
 	public static void main(String[] args) {
@@ -45,13 +47,11 @@ public class HomeController {
 				}
 			}
 		}
-	    
-	    
-		
 		
 		//create NUM_OF_THREAD thread pool
 		ExecutorService executorService = Executors.newFixedThreadPool(numOfThread);
 		ServerSocket serverSocket = null;
+		
 		try {
 			logger.info("Homecontroller: Binding to port: " + serverPort);
 			//create server socket with port = SERVER_PORT
@@ -64,10 +64,10 @@ public class HomeController {
 					Socket socket = serverSocket.accept();
 					
 					//get id user
-					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-							socket.getInputStream()));
-					long userId = Long.parseLong(bufferedReader.readLine());
-					bufferedReader.close();
+//					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+//							socket.getInputStream()));
+//					long userId = Long.parseLong(bufferedReader.readLine());
+//					bufferedReader.close();
 					
 					logger.info("HomeController: Client excepted " + socket);
 					
@@ -75,7 +75,7 @@ public class HomeController {
 					WorkerThread handler = new WorkerThread(socket);
 					
 					//manage list user connect
-					users.put(userId, handler);
+					//users.put(userId, handler);
 					
 					//execute thread
 					executorService.execute(handler);
