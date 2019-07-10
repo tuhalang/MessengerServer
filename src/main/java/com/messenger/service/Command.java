@@ -3,5 +3,5 @@ package com.messenger.service;
 import java.net.Socket;
 
 public interface Command {
-	void excute(Socket socket);
+	void excute(Socket socket, String content);
 }

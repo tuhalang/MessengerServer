@@ -33,6 +33,7 @@ public class WorkerThread extends Thread {
 				}
 				while(messages.size() > 0) {
 					logger.info("message from " + socket + " is : " + messages.pop());
+					
 				}
 				try {
 					Thread.sleep(1000);
@@ -41,7 +42,7 @@ public class WorkerThread extends Thread {
 				}
 			}
 		} catch (IOException e) {
-			logger.severe("WorkerThread: " + e.getMessage());
+			logger.severe(e.getMessage());
 		} finally {
 			if(bufferedReader != null) {
 				try {

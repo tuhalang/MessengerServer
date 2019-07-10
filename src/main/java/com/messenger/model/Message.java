@@ -10,6 +10,7 @@ public class Message implements Serializable{
 	private long targetId;
 	private String content;
 	private String image;
+	private boolean seen;
 	public long getMessageId() {
 		return messageId;
 	}
@@ -40,14 +41,10 @@ public class Message implements Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	@Override
-	public String toString() {
-		return "{\"messageId\":"+messageId+","
-				+ "\"sourceId\":"+sourceId+","
-				+ "\"targetId\":"+targetId+","
-				+ "\"content\":\""+content+"\","
-				+ "\"image\":\""+image+"\""
-				+ "}";
+	public boolean isSeen() {
+		return seen;
+	}
+	public void setSeen(boolean seen) {
+		this.seen = seen;
 	}
 }

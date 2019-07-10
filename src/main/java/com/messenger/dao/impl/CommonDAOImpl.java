@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +75,7 @@ public class CommonDAOImpl<T> implements CommonDAO<T> {
 		
 		try {
 			conn = getConnection();
+			
 			statement = conn.prepareStatement(sql);
 			setParameter(statement, parameters);
 			rs = statement.executeQuery();
@@ -113,26 +115,166 @@ public class CommonDAOImpl<T> implements CommonDAO<T> {
 	
 	@Override
 	public long insert(String sql, Object... parameters) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		long id = -1;
+		try {
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			setParameter(preparedStatement, parameters);
+			preparedStatement.executeUpdate();
+			resultSet = preparedStatement.getGeneratedKeys();
+			if(resultSet.next()) {
+				id = resultSet.getLong(1);
+			}
+			conn.commit();
+			return id;
+		} catch (SQLException e) {
+			logger.severe(e.getMessage());
+			if(conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					logger.severe(e1.getMessage());
+				}
+			}
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			if (resultSet != null) {
+				try {
+					resultSet.close();
+				} catch (SQLException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+		}
+		return -1;
 	}
 
 	@Override
 	public void update(String sql, Object... parameters) {
-		// TODO Auto-generated method stub
-		
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			preparedStatement = conn.prepareStatement(sql);
+			setParameter(preparedStatement, parameters);
+			preparedStatement.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
+			logger.severe(e.getMessage());
+			if(conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					logger.severe(e1.getMessage());
+				}
+			}
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+		}
 	}
 
 	@Override
 	public void delete(String sql, Object... parameters) {
-		// TODO Auto-generated method stub
-		
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			conn = getConnection();
+			conn.setAutoCommit(false);
+			preparedStatement = conn.prepareStatement(sql);
+			setParameter(preparedStatement, parameters);
+			preparedStatement.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
+			logger.severe(e.getMessage());
+			if(conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					logger.severe(e1.getMessage());
+				}
+			}
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+		}
 	}
 
 	@Override
 	public long count(String sql, Object... parameters) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			int count = 0;
+			connection = getConnection();
+			statement = connection.prepareStatement(sql);
+			setParameter(statement, parameters);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+			return count;
+		} catch (SQLException e) {
+			logger.severe(e.getMessage());
+			return 0;
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				logger.severe(e.getMessage());
+			}
+		}
 	}
 	
 	private void setParameter(PreparedStatement statement, Object... parameters) {

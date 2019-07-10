@@ -32,3 +32,67 @@ Jul 07, 2019 6:02:02 PM com.messenger.controller.WorkerThread run
 INFO: message from Socket[addr=/127.0.0.1,port=54742,localport=3308] is : test
 Jul 07, 2019 6:02:03 PM com.messenger.controller.WorkerThread run
 INFO: message from Socket[addr=/127.0.0.1,port=54742,localport=3308] is : test
+Jul 10, 2019 3:50:26 PM com.messenger.controller.HomeController main
+INFO: Homecontroller: Binding to port: 3308
+Jul 10, 2019 3:50:26 PM com.messenger.controller.HomeController main
+INFO: HomeController: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 10, 2019 3:50:26 PM com.messenger.controller.HomeController main
+INFO: HomeController: Waiting for client ...
+Jul 10, 2019 3:50:33 PM com.messenger.controller.HomeController main
+INFO: HomeController: Client excepted Socket[addr=/127.0.0.1,port=35102,localport=3308]
+Jul 10, 2019 3:50:34 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:35 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:36 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:37 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:38 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:39 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:40 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:41 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:50:42 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35102,localport=3308] is : test
+Jul 10, 2019 3:51:56 PM com.messenger.controller.HomeController main
+INFO: Homecontroller: Binding to port: 3308
+Jul 10, 2019 3:51:57 PM com.messenger.controller.HomeController main
+INFO: HomeController: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 10, 2019 3:51:57 PM com.messenger.controller.HomeController main
+INFO: HomeController: Waiting for client ...
+Jul 10, 2019 3:52:03 PM com.messenger.controller.HomeController main
+INFO: HomeController: Client excepted Socket[addr=/127.0.0.1,port=35110,localport=3308]
+Jul 10, 2019 3:52:03 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35110,localport=3308] is : test
+Jul 10, 2019 3:52:04 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35110,localport=3308] is : test
+Jul 10, 2019 3:52:32 PM com.messenger.controller.HomeController main
+INFO: Homecontroller: Binding to port: 3308
+Jul 10, 2019 3:52:32 PM com.messenger.controller.HomeController main
+INFO: HomeController: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 10, 2019 3:52:32 PM com.messenger.controller.HomeController main
+INFO: HomeController: Waiting for client ...
+Jul 10, 2019 3:52:45 PM com.messenger.controller.HomeController main
+INFO: HomeController: Client excepted Socket[addr=/127.0.0.1,port=35114,localport=3308]
+Jul 10, 2019 3:52:45 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:45 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:45 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:45 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:45 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:46 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:46 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:46 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
+Jul 10, 2019 3:52:46 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=35114,localport=3308] is : test
