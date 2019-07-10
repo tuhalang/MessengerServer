@@ -21,7 +21,7 @@ public class MessageMapper implements RowMapper<Message>{
 			message.setTargetId(result.getLong("targerId"));
 			message.setContent(result.getString("content"));
 			message.setImage(result.getString("image"));
-			message.setSeen(result.getInt("seen")==1);
+			message.setSeen(result.getInt("seen"));
 		} catch (SQLException e) {
 			logger.severe(e.getMessage());
 		}
