@@ -11,4 +11,5 @@ public interface UserDAO {
 	User findById(long id);
 	List<User> findAll();
 	List<User> find(int start, int limit);
+	boolean isExist(String username);
 }

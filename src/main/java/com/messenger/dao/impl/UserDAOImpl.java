@@ -1,5 +1,6 @@
 package com.messenger.dao.impl;
 
+import java.sql.Connection;
 import java.util.List;
 
 import com.messenger.dao.UserDAO;
@@ -51,6 +52,15 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 		String sql = "select * from user limit ?,?";
 		List<User> users = query(sql,new UserMapper(), start, limit);
 		return users;
+	}
+
+	@Override
+	public boolean isExist(String username) {
+		String sql = "select count(1) from user where username=? limit 1";
+		long count = count(sql, username);
+		if(count > 0)
+			return true;
+		return false;
 	}
 
 }
