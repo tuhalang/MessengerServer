@@ -12,6 +12,7 @@ import com.messenger.dao.UserDAO;
 import com.messenger.dao.impl.MessageDAOImpl;
 import com.messenger.dao.impl.UserDAOImpl;
 import com.messenger.logger.Logging;
+import com.messenger.model.Error;
 import com.messenger.model.Message;
 import com.messenger.model.User;
 import com.messenger.service.Command;
@@ -36,7 +37,10 @@ public class CommandMessage implements Command{
 				DataOutputStream outToClient;
 				try {
 					outToClient = new DataOutputStream(socket.getOutputStream());
-					outToClient.writeBytes("0{\"code\":\"e3\"}");
+					Error error = new Error();
+					error.setCode("e3");
+					//TODO set description for error
+					outToClient.writeBytes("0"+mapper.writeValueAsString(error));
 				} catch (IOException e1) {
 					logger.severe(e1.getMessage());
 				}
@@ -46,7 +50,7 @@ public class CommandMessage implements Command{
 			if(HomeController.users.containsKey(targetUser.getUsername())) {
 				Socket client = HomeController.users.get(targetUser.getUsername()).getSocket();
 				DataOutputStream outToClient = new DataOutputStream(client.getOutputStream());
-				outToClient.writeBytes(mapper.writeValueAsString(message));
+				outToClient.writeBytes("1"+mapper.writeValueAsString(message));
 				message.setSeen(1);
 				messageDAO.save(message);
 			}else {
@@ -58,7 +62,10 @@ public class CommandMessage implements Command{
 			DataOutputStream outToClient;
 			try {
 				outToClient = new DataOutputStream(socket.getOutputStream());
-				outToClient.writeBytes("0{\"code\":\"e\"}");
+				Error error = new Error();
+				error.setCode("e");
+				//TODO set description for error
+				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
 			} catch (IOException e1) {
 				logger.severe(e1.getMessage());
 			}

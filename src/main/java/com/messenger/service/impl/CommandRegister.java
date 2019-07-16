@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.messenger.dao.UserDAO;
 import com.messenger.dao.impl.UserDAOImpl;
 import com.messenger.logger.Logging;
+import com.messenger.model.Error;
 import com.messenger.model.User;
 import com.messenger.service.Command;
 
@@ -31,13 +32,19 @@ public class CommandRegister implements Command{
 				outToClient.writeBytes(mapper.writeValueAsString(user));
 			}else {
 				DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
-				outToClient.writeBytes("0{\"code\":\"e1\"}");
+				Error error = new Error();
+				error.setCode("e1");
+				//TODO set description for error
+				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
 			}
 		} catch (IOException e) {
 			DataOutputStream outToClient;
 			try {
 				outToClient = new DataOutputStream(socket.getOutputStream());
-				outToClient.writeBytes("0{\"code\":\"e\"}");
+				Error error = new Error();
+				error.setCode("e");
+				//TODO set description for error
+				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
 			} catch (IOException e1) {
 				logger.severe(e1.getMessage());
 			}

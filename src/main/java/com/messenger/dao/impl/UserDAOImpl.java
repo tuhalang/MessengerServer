@@ -23,9 +23,9 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 	}
 
 	@Override
-	public User findByUsername(String username) {
-		String sql = "select * from user where username=?";
-		List<User> users = query(sql,new UserMapper(), username);
+	public User findByUsernameAndPassword(String username, String password) {
+		String sql = "select * from user where username=? and password=?";
+		List<User> users = query(sql,new UserMapper(), username, password);
 		if(users.isEmpty())
 			return null;
 		return users.get(0);
@@ -61,6 +61,13 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 		if(count > 0)
 			return true;
 		return false;
+	}
+
+	@Override
+	public List<User> findLikeUsername(String username) {
+		String sql = "select * from user where username like %?%";
+		List<User> users = query(sql, new UserMapper(), username);
+		return users;
 	}
 
 }
