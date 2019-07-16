@@ -9,6 +9,7 @@ public class Message implements Serializable{
 	private long messageId;
 	private long sourceId;
 	private long targetId;
+	private String icon;
 	private String content;
 	private String image;
 	private int seen;

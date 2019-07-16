@@ -97,4 +97,9 @@ public class HomeController {
 			}
 		}
 	}
+	
+	
+	private static void checkOffline() {
+		
+	}
 }

@@ -13,7 +13,7 @@ import com.messenger.service.MessageService;
 public class MessageServiceImpl implements MessageService {
 
 	@Override
-	public void handle(Socket socket, String messaage) {
+	public void handle(Socket socket, String message) {
 
 		Logger logger = Logging.getLogger();
 		FileReader reader = null;
@@ -44,7 +44,7 @@ public class MessageServiceImpl implements MessageService {
 			}
 		}
 
-		int code = Integer.parseInt(messaage.substring(0, 1));
+		int code = Integer.parseInt(message.substring(0, 1));
 		
 		Command command = null;
 		
@@ -59,7 +59,7 @@ public class MessageServiceImpl implements MessageService {
 		}
 		
 		if(command != null) {
-			command.excute(socket, messaage.substring(1));
+			command.excute(socket, message.substring(1));
 		}else {
 			logger.severe("Can not create Command");
 		}

@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.logging.Logger;
 
 import com.messenger.logger.Logging;
+import com.messenger.service.MessageService;
+import com.messenger.service.impl.MessageServiceImpl;
 
 public class WorkerThread extends Thread {
 
@@ -23,6 +25,7 @@ public class WorkerThread extends Thread {
 		BufferedReader bufferedReader = null;
 		InputStreamReader inputStreamReader = null;
 		LinkedList<String> messages = new LinkedList<String>();
+		MessageService messageService = new MessageServiceImpl();
 		try {
 			while (true) {
 				inputStreamReader = new InputStreamReader(this.socket.getInputStream());
@@ -32,8 +35,8 @@ public class WorkerThread extends Thread {
 					messages.push(content);
 				}
 				while(messages.size() > 0) {
-					logger.info("message from " + socket + " is : " + messages.pop());
-					
+					logger.info("message from " + socket + " is : " + messages.peek());
+					messageService.handle(socket, messages.pop());
 				}
 				try {
 					Thread.sleep(1000);
