@@ -1,7 +1,9 @@
 package com.messenger.service.impl;
 
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.logging.Logger;
 
@@ -26,25 +28,30 @@ public class CommandLogin implements Command{
 			User user = mapper.readValue(content, User.class);
 			user = userDAO.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 			if(user != null) {
-				DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
-				outToClient.writeBytes("1"+mapper.writeValueAsString(user));
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				bw.write("1"+mapper.writeValueAsString(user));
+				bw.newLine();
+				bw.flush();
 			}
 			else {
-				DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
 				Error error = new Error();
 				error.setCode("e2");
 				//TODO set description for error
-				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				bw.write("0"+mapper.writeValueAsString(error));
+				bw.newLine();
+				bw.flush();
 			}
 			
 		} catch (IOException e) {
-			DataOutputStream outToClient;
 			try {
-				outToClient = new DataOutputStream(socket.getOutputStream());
 				Error error = new Error();
 				error.setCode("e");
 				//TODO set description for error
-				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
+				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				bw.write("0"+mapper.writeValueAsString(error));
+				bw.newLine();
+				bw.flush();
 			} catch (IOException e1) {
 				logger.severe(e1.getMessage());
 			}

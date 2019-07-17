@@ -1,0 +1,42 @@
+Jul 17, 2019 4:06:55 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16768,localport=3308]
+Jul 17, 2019 4:06:55 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16770,localport=3308]
+Jul 17, 2019 4:06:56 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=16768,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 17, 2019 4:06:56 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16774,localport=3308]
+Jul 17, 2019 4:06:56 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16776,localport=3308]
+Jul 17, 2019 4:06:56 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=16774,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 17, 2019 4:06:56 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=16776,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 17, 2019 4:06:57 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16782,localport=3308]
+Jul 17, 2019 4:06:57 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16784,localport=3308]
+Jul 17, 2019 4:06:57 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=16782,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 17, 2019 4:06:58 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16788,localport=3308]
+Jul 17, 2019 4:06:58 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16790,localport=3308]
+Jul 17, 2019 4:07:01 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16794,localport=3308]
+Jul 17, 2019 4:07:01 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16796,localport=3308]
+Jul 17, 2019 4:07:03 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16798,localport=3308]
+Jul 17, 2019 4:07:03 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16800,localport=3308]
+Jul 17, 2019 4:09:14 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16820,localport=3308]
+Jul 17, 2019 4:09:42 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16824,localport=3308]
+Jul 17, 2019 4:09:44 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16826,localport=3308]
+Jul 17, 2019 4:09:46 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16828,localport=3308]
+Jul 17, 2019 4:09:48 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16830,localport=3308]

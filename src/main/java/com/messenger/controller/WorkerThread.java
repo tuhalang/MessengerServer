@@ -38,11 +38,11 @@ public class WorkerThread extends Thread {
 					logger.info("message from " + socket + " is : " + messages.peek());
 					messageService.handle(socket, messages.pop());
 				}
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					logger.severe(e.getMessage());
-				}
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					logger.severe(e.getMessage());
+//				}
 			}
 		} catch (IOException e) {
 			logger.severe(e.getMessage());

@@ -70,7 +70,7 @@ public class HomeController {
 					String username = bufferedReader.readLine();
 					//bufferedReader.close();
 					
-					logger.info("Client excepted " + socket);
+					logger.info("Client excepted " + username + " -- " + socket);
 					
 					//create WorkerThread to handle request for each client
 					WorkerThread handler = new WorkerThread(socket);
