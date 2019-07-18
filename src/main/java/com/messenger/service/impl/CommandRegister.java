@@ -1,7 +1,9 @@
 package com.messenger.service.impl;
 
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.logging.Logger;
 
@@ -22,34 +24,61 @@ public class CommandRegister implements Command{
 		UserDAO userDAO = new UserDAOImpl();
 		
 		ObjectMapper mapper = new ObjectMapper();
+		BufferedWriter bw = null;
+		OutputStreamWriter osw = null;
 		try {
 			User user = mapper.readValue(content, User.class);
 			//validate user && check exist username
 			if(isValid(user) && !userDAO.isExist(user.getUsername())) {
 				user.setEnabled(1);
 				userDAO.save(user);
-				DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
-				outToClient.writeBytes(mapper.writeValueAsString(user));
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
+				bw.write(mapper.writeValueAsString(user));
+				bw.newLine();
+				bw.flush();
+
 			}else {
-				DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
 				Error error = new Error();
 				error.setCode("e1");
 				//TODO set description for error
-				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
+				bw.write("0"+mapper.writeValueAsString(error));
+				bw.newLine();
+				bw.flush();
 			}
 		} catch (IOException e) {
-			DataOutputStream outToClient;
 			try {
-				outToClient = new DataOutputStream(socket.getOutputStream());
 				Error error = new Error();
 				error.setCode("e");
 				//TODO set description for error
-				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
+				bw.write("0"+mapper.writeValueAsString(error));
+				bw.newLine();
+				bw.flush();
+				
 			} catch (IOException e1) {
 				logger.severe(e1.getMessage());
 			}
 			
 			logger.severe(e.getMessage());
+		} finally {
+			if(osw != null) {
+				try {
+					osw.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			if(bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
 		}
 		
 	}

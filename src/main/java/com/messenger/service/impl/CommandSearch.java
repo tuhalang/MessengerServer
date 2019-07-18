@@ -1,7 +1,9 @@
 package com.messenger.service.impl;
 
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.List;
 import java.util.logging.Logger;
@@ -23,24 +25,46 @@ public class CommandSearch implements Command{
 	public void excute(Socket socket, String content) {
 		ObjectMapper mapper = new ObjectMapper();
 		UserDAO userDAO = new UserDAOImpl();
+		BufferedWriter bw = null;
+		OutputStreamWriter osw = null;
 		try {
 			Key key = mapper.readValue(content, Key.class);
 			List<User> users = userDAO.findLikeUsername(key.getKey());
-			DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
-			outToClient.writeBytes("1"+mapper.writeValueAsString(users));
+			osw = new OutputStreamWriter(socket.getOutputStream());
+			bw = new BufferedWriter(osw);
+			bw.write("1"+mapper.writeValueAsString(users));
+			bw.newLine();
+			bw.flush();
 		} catch (IOException e) {
-			DataOutputStream outToClient;
 			try {
-				outToClient = new DataOutputStream(socket.getOutputStream());
 				Error error = new Error();
 				error.setCode("e");
 				//TODO set description for error
-				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
+				bw.write("0"+mapper.writeValueAsString(error));
+				bw.newLine();
+				bw.flush();
 			} catch (IOException e1) {
 				logger.severe(e1.getMessage());
 			}
 			
 			logger.severe(e.getMessage());
+		} finally {
+			if(osw != null) {
+				try {
+					osw.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			if(bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
 		}
 		
 		

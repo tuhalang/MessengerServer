@@ -1,8 +1,11 @@
 package com.messenger.service.impl;
 
+import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,6 +30,8 @@ public class CommandMessage implements Command{
 		MessageDAO messageDAO = new MessageDAOImpl();
 		UserDAO userDAO = new UserDAOImpl();
 		ObjectMapper mapper = new ObjectMapper();
+		BufferedWriter bw = null;
+		OutputStreamWriter osw = null;
 		try {
 			Message message= mapper.readValue(content, Message.class);
 			messageDAO.save(message);
@@ -34,43 +39,66 @@ public class CommandMessage implements Command{
 			
 			//if user is not enabled then message will be not sent
 			if(targetUser.getEnabled()==0) {
-				DataOutputStream outToClient;
 				try {
-					outToClient = new DataOutputStream(socket.getOutputStream());
+					osw = new OutputStreamWriter(socket.getOutputStream());
+					bw = new BufferedWriter(osw);
 					Error error = new Error();
 					error.setCode("e3");
 					//TODO set description for error
-					outToClient.writeBytes("0"+mapper.writeValueAsString(error));
+					bw.write("0"+mapper.writeValueAsString(error));
+					bw.newLine();
+					bw.flush();
 				} catch (IOException e1) {
 					logger.severe(e1.getMessage());
 				}
 				return;
 			}
 			
+			message.setSeen(0);
+			messageDAO.save(message);
+			
 			if(HomeController.users.containsKey(targetUser.getUsername())) {
 				Socket client = HomeController.users.get(targetUser.getUsername()).getSocket();
-				DataOutputStream outToClient = new DataOutputStream(client.getOutputStream());
-				outToClient.writeBytes("1"+mapper.writeValueAsString(message));
+				osw = new OutputStreamWriter(client.getOutputStream());
+				bw = new BufferedWriter(osw);
+				bw.write("1"+mapper.writeValueAsString(message));
+				bw.newLine();
+				bw.flush();
 				message.setSeen(1);
-				messageDAO.save(message);
-			}else {
-				message.setSeen(0);
-				messageDAO.save(message);
+				messageDAO.update(message);
 			}
 			
 		} catch (IOException e) {
-			DataOutputStream outToClient;
+			
 			try {
-				outToClient = new DataOutputStream(socket.getOutputStream());
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
 				Error error = new Error();
 				error.setCode("e");
 				//TODO set description for error
-				outToClient.writeBytes("0"+mapper.writeValueAsString(error));
+				bw.write("0"+mapper.writeValueAsString(error));
+				bw.newLine();
+				bw.flush();
 			} catch (IOException e1) {
 				logger.severe(e1.getMessage());
 			}
 			
 			logger.severe(e.getMessage());
+		} finally {
+			if(osw != null) {
+				try {
+					osw.close();
+				} catch (IOException e) {
+					logger.log(Level.SEVERE,e.getMessage());
+				}
+			}
+			if(bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					logger.log(Level.SEVERE,e.getMessage());
+				}
+			}
 		}
 	}
 

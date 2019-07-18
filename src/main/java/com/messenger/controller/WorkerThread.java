@@ -13,6 +13,8 @@ import com.messenger.service.impl.MessageServiceImpl;
 
 public class WorkerThread extends Thread {
 
+	private int flag = 1;
+	
 	private Socket socket;
 
 	public WorkerThread(Socket socket) {
@@ -24,34 +26,29 @@ public class WorkerThread extends Thread {
 		Logger logger = Logging.getLogger();
 		BufferedReader bufferedReader = null;
 		InputStreamReader inputStreamReader = null;
-		LinkedList<String> messages = new LinkedList<String>();
+		LinkedList<String> messages = new LinkedList<>();
 		MessageService messageService = new MessageServiceImpl();
 		try {
-			while (true) {
+			while (flag == 1) {
 				inputStreamReader = new InputStreamReader(this.socket.getInputStream());
 				bufferedReader = new BufferedReader(inputStreamReader);
 				String content = bufferedReader.readLine();
 				if (content != null) {
 					messages.push(content);
 				}
-				while(messages.size() > 0) {
+				while(!messages.isEmpty()) {
 					logger.info("message from " + socket + " is : " + messages.peek());
 					messageService.handle(socket, messages.pop());
 				}
-//				try {
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e) {
-//					logger.severe(e.getMessage());
-//				}
 			}
 		} catch (IOException e) {
-			logger.severe(e.getMessage());
+			logger.severe(e.getLocalizedMessage());
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch (IOException e) {
-					logger.severe(e.getMessage());
+					logger.severe(e.getLocalizedMessage());
 				}
 			}
 			
@@ -59,15 +56,16 @@ public class WorkerThread extends Thread {
 				try {
 					inputStreamReader.close();
 				} catch (IOException e) {
-					logger.severe(e.getMessage());
+					logger.severe(e.getLocalizedMessage());
 				}
 			}
 			
 			if(socket != null) {
 				try {
 					socket.close();
+					
 				} catch (IOException e) {
-					logger.severe(e.getMessage());
+					logger.severe(e.getLocalizedMessage());
 				}
 			}
 		}
@@ -79,6 +77,14 @@ public class WorkerThread extends Thread {
 
 	public void setSocket(Socket socket) {
 		this.socket = socket;
+	}
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
 	}
 	
 	

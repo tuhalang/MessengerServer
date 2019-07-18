@@ -24,11 +24,14 @@ public class CommandLogin implements Command{
 		
 		ObjectMapper mapper = new ObjectMapper();
 		UserDAO userDAO = new UserDAOImpl();
+		BufferedWriter bw = null;
+		OutputStreamWriter osw = null;
 		try {
 			User user = mapper.readValue(content, User.class);
 			user = userDAO.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 			if(user != null) {
-				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
 				bw.write("1"+mapper.writeValueAsString(user));
 				bw.newLine();
 				bw.flush();
@@ -37,7 +40,8 @@ public class CommandLogin implements Command{
 				Error error = new Error();
 				error.setCode("e2");
 				//TODO set description for error
-				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
 				bw.write("0"+mapper.writeValueAsString(error));
 				bw.newLine();
 				bw.flush();
@@ -48,7 +52,8 @@ public class CommandLogin implements Command{
 				Error error = new Error();
 				error.setCode("e");
 				//TODO set description for error
-				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				osw = new OutputStreamWriter(socket.getOutputStream());
+				bw = new BufferedWriter(osw);
 				bw.write("0"+mapper.writeValueAsString(error));
 				bw.newLine();
 				bw.flush();
@@ -57,6 +62,21 @@ public class CommandLogin implements Command{
 			}
 			
 			logger.severe(e.getMessage());
+		} finally {
+			if(osw != null) {
+				try {
+					osw.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
+			if(bw != null) {
+				try {
+					bw.close();
+				} catch (IOException e) {
+					logger.severe(e.getMessage());
+				}
+			}
 		}
 	}
 	

@@ -286,3 +286,81 @@ Jul 17, 2019 4:12:20 PM com.messenger.controller.HomeController main
 INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=16846,localport=3308]
 Jul 17, 2019 4:12:21 PM com.messenger.controller.WorkerThread run
 INFO: message from Socket[addr=/127.0.0.1,port=16846,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 8:50:23 AM com.messenger.controller.HomeController main
+INFO: Binding to port: 3308
+Jul 18, 2019 8:50:23 AM com.messenger.controller.HomeController main
+INFO: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 18, 2019 8:50:23 AM com.messenger.controller.HomeController main
+INFO: Waiting for client ...
+Jul 18, 2019 8:50:52 AM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=24112,localport=3308]
+Jul 18, 2019 8:50:52 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=24112,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 8:50:53 AM com.messenger.controller.WorkerThread run
+SEVERE: Socket is closed
+Jul 18, 2019 8:54:03 AM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=24132,localport=3308]
+Jul 18, 2019 8:54:03 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=24132,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 8:54:03 AM com.messenger.controller.WorkerThread run
+SEVERE: Socket is closed
+Jul 18, 2019 8:57:17 AM com.messenger.controller.HomeController main
+INFO: Binding to port: 3308
+Jul 18, 2019 8:57:17 AM com.messenger.controller.HomeController main
+INFO: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 18, 2019 8:57:17 AM com.messenger.controller.HomeController main
+INFO: Waiting for client ...
+Jul 18, 2019 8:57:33 AM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=24152,localport=3308]
+Jul 18, 2019 8:57:34 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=24152,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 8:57:34 AM com.messenger.controller.WorkerThread run
+SEVERE: Socket is closed
+Jul 18, 2019 8:59:14 AM com.messenger.controller.HomeController main
+INFO: Binding to port: 3308
+Jul 18, 2019 8:59:14 AM com.messenger.controller.HomeController main
+INFO: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 18, 2019 8:59:14 AM com.messenger.controller.HomeController main
+INFO: Waiting for client ...
+Jul 18, 2019 8:59:29 AM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=24160,localport=3308]
+Jul 18, 2019 8:59:29 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=24160,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 8:59:30 AM com.messenger.controller.WorkerThread run
+SEVERE: Socket is closed
+Jul 18, 2019 9:01:42 AM com.messenger.controller.HomeController main
+INFO: Binding to port: 3308
+Jul 18, 2019 9:01:42 AM com.messenger.controller.HomeController main
+INFO: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 18, 2019 9:01:42 AM com.messenger.controller.HomeController main
+INFO: Waiting for client ...
+Jul 18, 2019 9:01:56 AM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=24182,localport=3308]
+Jul 18, 2019 9:01:56 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=24182,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 9:01:57 AM com.messenger.controller.WorkerThread run
+SEVERE: Socket is closed
+Jul 18, 2019 9:03:07 AM com.messenger.controller.HomeController main
+INFO: Binding to port: 3308
+Jul 18, 2019 9:03:07 AM com.messenger.controller.HomeController main
+INFO: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 18, 2019 9:03:07 AM com.messenger.controller.HomeController main
+INFO: Waiting for client ...
+Jul 18, 2019 9:03:21 AM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=24196,localport=3308]
+Jul 18, 2019 9:03:21 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=24196,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 9:03:22 AM com.messenger.controller.WorkerThread run
+SEVERE: Socket is closed
+Jul 18, 2019 9:24:21 AM com.messenger.controller.HomeController main
+INFO: Binding to port: 3,308
+Jul 18, 2019 9:24:21 AM com.messenger.controller.HomeController main
+INFO: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 18, 2019 9:24:21 AM com.messenger.controller.HomeController main
+INFO: Waiting for client ...
+Jul 18, 2019 9:24:35 AM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=24338,localport=3308]
+Jul 18, 2019 9:24:35 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=24338,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 18, 2019 9:24:36 AM com.messenger.controller.WorkerThread run
+SEVERE: Socket is closed
