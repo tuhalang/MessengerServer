@@ -9,8 +9,8 @@ public class User implements Serializable{
 	private long userId;
 	private String username;
 	private String password;
-	private boolean sex;
-	private boolean enabled;
+	private int sex;
+	private int enabled;
 	
 	public long getUserId() {
 		return userId;
@@ -30,16 +30,16 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isSex() {
+	public int getSex() {
 		return sex;
 	}
-	public void setSex(boolean sex) {
+	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public boolean isEnabled() {
+	public int getEnabled() {
 		return enabled;
 	}
-	public void setEnabled(boolean enabled) {
+	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
 	

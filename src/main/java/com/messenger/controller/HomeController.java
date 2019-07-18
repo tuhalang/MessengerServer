@@ -1,15 +1,21 @@
 package com.messenger.controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.messenger.logger.Logging;
@@ -18,15 +24,17 @@ import com.messenger.logger.Logging;
 public class HomeController {
 
 	
-	public static HashMap<Long, WorkerThread> users = new HashMap<Long, WorkerThread>();
+	public static Map<String, WorkerThread> users = new HashMap<String, WorkerThread>();
 	
 	static int numOfThread;
 	
 	static int serverPort;
 	
+	public static int flag = 1;
+	
+	private static Logger logger = Logging.getLogger();
+	
 	public static void main(String[] args) {
-		
-		Logger logger = Logging.getLogger();
 		
 		FileReader reader = null;
 		Properties p = null;
@@ -37,13 +45,13 @@ public class HomeController {
 		    numOfThread = Integer.parseInt(p.getProperty("NUM_OF_THREAD"));
 			serverPort = Integer.parseInt(p.getProperty("SERVER_PORT"));
 		} catch (IOException e) {
-			logger.severe("Homecontroller: " + e.getMessage());
+			logger.severe(e.getMessage());
 		} finally {
 			if(reader!=null) {
 				try {
 					reader.close();
 				} catch (IOException e) {
-					logger.severe("Homecontroller: " + e.getMessage());
+					logger.severe(e.getMessage());
 				}
 			}
 		}
@@ -53,47 +61,84 @@ public class HomeController {
 		ServerSocket serverSocket = null;
 		
 		try {
-			logger.info("Homecontroller: Binding to port: " + serverPort);
+			logger.log(Level.INFO, "Binding to port: {0}", serverPort);
 			//create server socket with port = SERVER_PORT
 			serverSocket = new ServerSocket(serverPort);
-			logger.info("HomeController: Server started: " + serverSocket);
-			logger.info("HomeController: Waiting for client ...");
+			logger.log(Level.INFO, "Server started: {0}", serverSocket);
+			logger.info("Waiting for client ...");
 			//wait client connect
-			while(true) {
+			while(flag == 1) {
 				try {
+					checkOffline();
+					
 					Socket socket = serverSocket.accept();
 					
-					//get id user
-//					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-//							socket.getInputStream()));
-//					long userId = Long.parseLong(bufferedReader.readLine());
-//					bufferedReader.close();
+					//get username
+					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+							socket.getInputStream()));
+					String username = bufferedReader.readLine();
 					
-					logger.info("HomeController: Client excepted " + socket);
+					logger.log(Level.INFO, "Client excepted {0}", username + " -- " + socket);
 					
 					//create WorkerThread to handle request for each client
 					WorkerThread handler = new WorkerThread(socket);
 					
 					//manage list user connect
-					//users.put(userId, handler);
+					users.put(username, handler);
 					
 					//execute thread
 					executorService.execute(handler);
+					
+					
 				}catch(IOException e) {
-					logger.severe("Homecontroller: " + e.getMessage());
+					logger.severe(e.getMessage());
 				}
 			}
 		} catch (IOException e) {
-			logger.severe("Homecontroller: " + e.getMessage());
+			logger.severe(e.getMessage());
 		} finally {
 			if(serverSocket != null) {
 				try {
 					serverSocket.close();
-					logger.info("Homecontroller: server socket cloesed");
+					logger.info("server socket is cloesed");
 				} catch (IOException e) {
-					logger.severe("Homecontroller: " + e.getMessage());
+					logger.severe(e.getMessage());
 				}
 			}
 		}
+	}
+	
+	
+	private static void checkOffline() {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				BufferedWriter bufferedWriter = null;
+				for(String username : users.keySet()) {
+					try {
+						WorkerThread workerThread = users.get(username);
+						Socket socket = workerThread.getSocket();
+						bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+						bufferedWriter.write("");
+						bufferedWriter.newLine();
+						bufferedWriter.flush();
+					} catch (IOException e) {
+						users.remove(username);
+						logger.log(Level.SEVERE,e.getMessage());
+					} finally {
+						if(bufferedWriter != null) {
+							try {
+								bufferedWriter.close();
+							} catch (IOException e) {
+								logger.log(Level.SEVERE,e.getMessage());
+							}
+						}
+					}
+				}
+				
+			}
+		}, 0, 2000);
 	}
 }

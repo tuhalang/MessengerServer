@@ -1,6 +1,7 @@
 package com.messenger.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Message implements Serializable{
 	
@@ -8,9 +9,12 @@ public class Message implements Serializable{
 	private long messageId;
 	private long sourceId;
 	private long targetId;
+	private String icon;
 	private String content;
 	private String image;
-	private boolean seen;
+	private int seen;
+	private Date date;
+
 	public long getMessageId() {
 		return messageId;
 	}
@@ -41,20 +45,18 @@ public class Message implements Serializable{
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public boolean isSeen() {
+
+	public int getSeen() {
 		return seen;
 	}
-	public void setSeen(boolean seen) {
+	public void setSeen(int seen) {
 		this.seen = seen;
 	}
-	@Override
-	public String toString() {
-		return "{\"messageId\":"+messageId+","
-				+ "\"sourceId\":"+sourceId+","
-				+ "\"targetId\":"+targetId+","
-				+ "\"content\":\""+content+"\","
-				+ "\"image\":\""+image+"\","
-				+ "\"seen\":"+seen
-				+ "}";
+	public Date getDate() {
+		return date;
 	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
 }

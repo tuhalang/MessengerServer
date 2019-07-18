@@ -8,9 +8,13 @@ import java.util.LinkedList;
 import java.util.logging.Logger;
 
 import com.messenger.logger.Logging;
+import com.messenger.service.MessageService;
+import com.messenger.service.impl.MessageServiceImpl;
 
 public class WorkerThread extends Thread {
 
+	private int flag = 1;
+	
 	private Socket socket;
 
 	public WorkerThread(Socket socket) {
@@ -22,32 +26,29 @@ public class WorkerThread extends Thread {
 		Logger logger = Logging.getLogger();
 		BufferedReader bufferedReader = null;
 		InputStreamReader inputStreamReader = null;
-		LinkedList<String> messages = new LinkedList<String>();
+		LinkedList<String> messages = new LinkedList<>();
+		MessageService messageService = new MessageServiceImpl();
 		try {
-			while (true) {
+			while (flag == 1) {
 				inputStreamReader = new InputStreamReader(this.socket.getInputStream());
 				bufferedReader = new BufferedReader(inputStreamReader);
 				String content = bufferedReader.readLine();
 				if (content != null) {
 					messages.push(content);
 				}
-				while(messages.size() > 0) {
-					logger.info("message from " + socket + " is : " + messages.pop());
-				}
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					logger.severe(e.getMessage());
+				while(!messages.isEmpty()) {
+					logger.info("message from " + socket + " is : " + messages.peek());
+					messageService.handle(socket, messages.pop());
 				}
 			}
 		} catch (IOException e) {
-			logger.severe("WorkerThread: " + e.getMessage());
+			logger.severe(e.getLocalizedMessage());
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch (IOException e) {
-					logger.severe(e.getMessage());
+					logger.severe(e.getLocalizedMessage());
 				}
 			}
 			
@@ -55,17 +56,36 @@ public class WorkerThread extends Thread {
 				try {
 					inputStreamReader.close();
 				} catch (IOException e) {
-					logger.severe(e.getMessage());
+					logger.severe(e.getLocalizedMessage());
 				}
 			}
 			
 			if(socket != null) {
 				try {
 					socket.close();
+					
 				} catch (IOException e) {
-					logger.severe(e.getMessage());
+					logger.severe(e.getLocalizedMessage());
 				}
 			}
 		}
 	}
+
+	public Socket getSocket() {
+		return socket;
+	}
+
+	public void setSocket(Socket socket) {
+		this.socket = socket;
+	}
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+	
+	
 }
