@@ -34,7 +34,7 @@ public class CommandRegister implements Command{
 				userDAO.save(user);
 				osw = new OutputStreamWriter(socket.getOutputStream());
 				bw = new BufferedWriter(osw);
-				bw.write(mapper.writeValueAsString(user));
+				bw.write("2"+mapper.writeValueAsString(user));
 				bw.newLine();
 				bw.flush();
 

@@ -65,8 +65,8 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 
 	@Override
 	public List<User> findLikeUsername(String username) {
-		String sql = "select * from user where username like %?%";
-		List<User> users = query(sql, new UserMapper(), username);
+		String sql = "select * from user where username like ?";
+		List<User> users = query(sql, new UserMapper(), "%"+username+"%");
 		return users;
 	}
 
