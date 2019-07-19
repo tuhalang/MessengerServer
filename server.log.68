@@ -1,0 +1,8 @@
+Jul 20, 2019 12:15:36 AM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 20, 2019 12:15:36 AM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 20, 2019 12:15:36 AM com.messenger.service.impl.CommandMessage excute
+INFO: sent message
+Jul 20, 2019 12:25:41 AM com.messenger.controller.WorkerThread run
+SEVERE: Connection reset

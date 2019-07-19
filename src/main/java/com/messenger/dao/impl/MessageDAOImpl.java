@@ -11,9 +11,11 @@ public class MessageDAOImpl extends CommonDAOImpl<Message> implements MessageDAO
 
 	@Override
 	public long save(Message message) {
-		String sql = "insert into message(sourceId, targetId, content, image, seen, date)";
-		return insert(sql, message.getSourceId(), message.getTargetId(), message.getContent(),
+		String sql = "insert into message(sourceId, targetId, content, image, seen, date) value(?,?,?,?,?,?)";
+		long id = insert(sql, message.getSourceId(), message.getTargetId(), message.getContent(),
 				message.getImage(), message.getSeen(), new Date());
+		message.setMessageId(id);
+		return id;
 	}
 
 	@Override

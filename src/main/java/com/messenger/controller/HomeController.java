@@ -8,8 +8,10 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
@@ -106,6 +108,7 @@ public class HomeController {
 
 	private static void checkOffline() {
 		Timer timer = new Timer();
+		Queue<String> listOffline = new LinkedList<String>();
 		timer.schedule(new TimerTask() {
 
 			@Override
@@ -114,12 +117,17 @@ public class HomeController {
 				for (String username : users.keySet()) {
 					WorkerThread workerThread = users.get(username);
 					Socket socket = workerThread.getSocket();
+					System.out.println(username);
 					if(!socket.isConnected() || socket.isClosed()) {
-						users.remove(username);
+						listOffline.add(username);
 					}
+				}
+				while(!listOffline.isEmpty()) {
+					users.remove(listOffline.poll());
 				}
 
 			}
-		}, 0, 2000);
+		}, 0, 5000);
+		
 	}
 }

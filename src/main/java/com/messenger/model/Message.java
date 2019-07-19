@@ -56,5 +56,12 @@ public class Message implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	
 	
 }

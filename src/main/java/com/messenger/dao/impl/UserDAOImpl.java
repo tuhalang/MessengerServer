@@ -12,7 +12,9 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 	@Override
 	public long save(User user) {
 		String sql = "insert into user(username, password, sex, enabled) value(?,?,?,?)";
-		return insert(sql, user.getUsername(), user.getPassword(), user.getSex(), user.getEnabled());
+		long id = insert(sql, user.getUsername(), user.getPassword(), user.getSex(), user.getEnabled());
+		user.setUserId(id);
+		return id;
 	}
 
 	@Override

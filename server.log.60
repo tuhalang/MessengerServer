@@ -1,0 +1,30 @@
+Jul 20, 2019 12:14:19 AM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 20, 2019 12:15:22 AM com.messenger.controller.HomeController main
+INFO: Client excepted tuhalang -- Socket[addr=/127.0.0.1,port=26648,localport=3308]
+Jul 20, 2019 12:15:23 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=26648,localport=3308] is : 1{"userId":0,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":0}
+Jul 20, 2019 12:15:23 AM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 1
+Jul 20, 2019 12:15:23 AM com.messenger.service.impl.CommandLogin excute
+INFO: send to user Socket[addr=/127.0.0.1,port=26648,localport=3308]: 1{"userId":2,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":1}
+Jul 20, 2019 12:15:24 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=26648,localport=3308] is : 5
+Jul 20, 2019 12:15:24 AM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 5
+Jul 20, 2019 12:15:24 AM com.messenger.service.impl.CommandFindAll excute
+INFO: [{"userId":1,"username":"hung","password":"123456","sex":1,"enabled":1}, {"userId":2,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":1}, {"userId":3,"username":"tuhalang123","password":"Abcdef`12@","sex":0,"enabled":1}, {"userId":4,"username":"tuhalang1234","password":"Abcdef`12@","sex":0,"enabled":1}]
+Jul 20, 2019 12:15:30 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=26648,localport=3308] is : 4{"key":"hung"}
+Jul 20, 2019 12:15:30 AM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 20, 2019 12:15:36 AM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=26648,localport=3308] is : 3{"messageId":0,"sourceId":2,"targetId":1,"icon":"","content":"AAAAAA","image":"","seen":0,"date":null}
+Jul 20, 2019 12:15:36 AM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 20, 2019 12:15:36 AM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 20, 2019 12:15:36 AM com.messenger.service.impl.CommandMessage excute
+INFO: sent message
+Jul 20, 2019 12:25:41 AM com.messenger.controller.WorkerThread run
+SEVERE: Connection reset
