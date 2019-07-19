@@ -40,6 +40,7 @@ public class WorkerThread extends Thread {
 					logger.info("message from " + socket + " is : " + messages.peek());
 					messageService.handle(socket, messages.pop());
 				}
+				
 			}
 		} catch (IOException e) {
 			logger.severe(e.getLocalizedMessage());

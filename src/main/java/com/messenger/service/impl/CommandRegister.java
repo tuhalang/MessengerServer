@@ -65,20 +65,20 @@ public class CommandRegister implements Command{
 			
 			logger.severe(e.getMessage());
 		} finally {
-			if(osw != null) {
-				try {
-					osw.close();
-				} catch (IOException e) {
-					logger.severe(e.getMessage());
-				}
-			}
-			if(bw != null) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					logger.severe(e.getMessage());
-				}
-			}
+//			if(osw != null) {
+//				try {
+//					osw.close();
+//				} catch (IOException e) {
+//					logger.severe(e.getMessage());
+//				}
+//			}
+//			if(bw != null) {
+//				try {
+//					bw.close();
+//				} catch (IOException e) {
+//					logger.severe(e.getMessage());
+//				}
+//			}
 		}
 		
 	}

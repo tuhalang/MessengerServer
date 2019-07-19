@@ -59,13 +59,15 @@ public class CommandMessage implements Command{
 			
 			if(HomeController.users.containsKey(targetUser.getUsername())) {
 				Socket client = HomeController.users.get(targetUser.getUsername()).getSocket();
-				osw = new OutputStreamWriter(client.getOutputStream());
-				bw = new BufferedWriter(osw);
-				bw.write("1"+mapper.writeValueAsString(message));
-				bw.newLine();
-				bw.flush();
-				message.setSeen(1);
-				messageDAO.update(message);
+				if(client.isConnected()) {
+					osw = new OutputStreamWriter(client.getOutputStream());
+					bw = new BufferedWriter(osw);
+					bw.write("1"+mapper.writeValueAsString(message));
+					bw.newLine();
+					bw.flush();
+					message.setSeen(1);
+					messageDAO.update(message);
+				}
 			}
 			
 		} catch (IOException e) {
@@ -85,20 +87,20 @@ public class CommandMessage implements Command{
 			
 			logger.severe(e.getMessage());
 		} finally {
-			if(osw != null) {
-				try {
-					osw.close();
-				} catch (IOException e) {
-					logger.log(Level.SEVERE,e.getMessage());
-				}
-			}
-			if(bw != null) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					logger.log(Level.SEVERE,e.getMessage());
-				}
-			}
+//			if(osw != null) {
+//				try {
+//					osw.close();
+//				} catch (IOException e) {
+//					logger.log(Level.SEVERE,e.getMessage());
+//				}
+//			}
+//			if(bw != null) {
+//				try {
+//					bw.close();
+//				} catch (IOException e) {
+//					logger.log(Level.SEVERE,e.getMessage());
+//				}
+//			}
 		}
 	}
 
