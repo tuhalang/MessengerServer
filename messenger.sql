@@ -1,13 +1,13 @@
--- MariaDB dump 10.17  Distrib 10.4.6-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
 --
 -- Host: localhost    Database: messenger
 -- ------------------------------------------------------
--- Server version	10.4.6-MariaDB-1:10.4.6+maria~xenial
+-- Server version	5.7.26-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,12 +23,13 @@ DROP TABLE IF EXISTS `message`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `message` (
-  `messageId` bigint(20) NOT NULL AUTO_INCREMENT,
+  `messageId` bigint(20) NOT NULL,
   `sourceId` bigint(20) NOT NULL,
   `targetId` bigint(20) NOT NULL,
-  `content` text COLLATE utf8_swedish_ci DEFAULT NULL,
+  `icon` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
+  `content` text COLLATE utf8_swedish_ci,
   `image` varchar(255) COLLATE utf8_swedish_ci DEFAULT NULL,
-  `seen` int(11) NOT NULL DEFAULT 0,
+  `seen` int(11) NOT NULL DEFAULT '0',
   `date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`messageId`),
   KEY `sourceId` (`sourceId`),
@@ -59,9 +60,9 @@ CREATE TABLE `user` (
   `username` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_swedish_ci NOT NULL,
   `sex` int(11) DEFAULT NULL,
-  `enabled` int(11) NOT NULL DEFAULT 1,
+  `enabled` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +71,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'hung','123456',NULL,1);
+INSERT INTO `user` VALUES (1,'hung','123456',NULL,1),(2,'123','123456',0,1),(3,'tvd','123456',0,1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -83,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-17 16:42:24
+-- Dump completed on 2019-07-21 20:10:39

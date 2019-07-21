@@ -43,7 +43,7 @@ public class WorkerThread extends Thread {
 				
 			}
 		} catch (IOException e) {
-			logger.severe(e.getLocalizedMessage());
+			logger.severe("except"+e.getLocalizedMessage());
 		} finally {
 			if(bufferedReader != null) {
 				try {

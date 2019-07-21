@@ -32,6 +32,13 @@ public class Message implements Serializable{
 	public void setTargetId(long targetId) {
 		this.targetId = targetId;
 	}
+	
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 	public String getContent() {
 		return content;
 	}

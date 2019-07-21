@@ -22,6 +22,7 @@ public class MessageServiceImpl implements MessageService {
 		int registerCode = 2;
 		int messageCode = 3;
 		int searchCode = 4;
+		int findAllCode = 5;
 
 		try {
 			reader = new FileReader("config/application.properties");
@@ -31,6 +32,7 @@ public class MessageServiceImpl implements MessageService {
 			registerCode = Integer.parseInt(p.getProperty("REGISTER_CODE"));
 			messageCode = Integer.parseInt(p.getProperty("MESSAGE_CODE"));
 			searchCode = Integer.parseInt(p.getProperty("SEARCH_CODE"));
+			findAllCode = Integer.parseInt(p.getProperty("FIND_ALL_CODE"));
 			
 		} catch (IOException e) {
 			logger.severe("Homecontroller: " + e.getMessage());
@@ -56,6 +58,8 @@ public class MessageServiceImpl implements MessageService {
 			command = new CommandMessage();
 		}else if (code == searchCode) {
 			command = new CommandSearch();
+		}else if (code == findAllCode) {
+			command = new CommandFindAll();
 		}
 		
 		if(command != null) {

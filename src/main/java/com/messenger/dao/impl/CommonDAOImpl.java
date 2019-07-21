@@ -3,6 +3,7 @@ package com.messenger.dao.impl;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -213,6 +214,7 @@ public class CommonDAOImpl<T> implements CommonDAO<T> {
 			conn.setAutoCommit(false);
 			preparedStatement = conn.prepareStatement(sql);
 			setParameter(preparedStatement, parameters);
+			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 			conn.commit();
 		} catch (SQLException e) {
@@ -254,7 +256,7 @@ public class CommonDAOImpl<T> implements CommonDAO<T> {
 			setParameter(statement, parameters);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				count = resultSet.getInt(1);
+				count++;
 			}
 			return count;
 		} catch (SQLException e) {
@@ -285,11 +287,13 @@ public class CommonDAOImpl<T> implements CommonDAO<T> {
 				if (parameter instanceof Long) {
 					statement.setLong(index, (Long) parameter);
 				} else if (parameter instanceof String) {
-					statement.setString(index, (String) parameter);
+					statement.setString(index,(String) parameter);
 				} else if (parameter instanceof Integer) {
 					statement.setInt(index, (Integer) parameter);
-				} else if (parameter instanceof Timestamp) {
+				} else if (parameter instanceof Timestamp) { 
 					statement.setTimestamp(index, (Timestamp) parameter);
+				} else if (parameter instanceof Date) {
+					statement.setTimestamp(index, new Timestamp(((Date) parameter).getTime()));
 				}
 			}
 		} catch (SQLException e) {

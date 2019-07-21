@@ -62,7 +62,7 @@ public class CommandMessage implements Command{
 				if(client.isConnected()) {
 					osw = new OutputStreamWriter(client.getOutputStream());
 					bw = new BufferedWriter(osw);
-					bw.write("1"+mapper.writeValueAsString(message));
+					bw.write("3"+mapper.writeValueAsString(message));
 					bw.newLine();
 					bw.flush();
 					message.setSeen(1);

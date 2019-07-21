@@ -32,7 +32,7 @@ public class CommandSearch implements Command{
 			List<User> users = userDAO.findLikeUsername(key.getKey());
 			osw = new OutputStreamWriter(socket.getOutputStream());
 			bw = new BufferedWriter(osw);
-			bw.write("1"+mapper.writeValueAsString(users));
+			bw.write("4"+mapper.writeValueAsString(users));
 			bw.newLine();
 			bw.flush();
 		} catch (IOException e) {

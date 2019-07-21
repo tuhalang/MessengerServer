@@ -56,7 +56,7 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 
 	@Override
 	public boolean isExist(String username) {
-		String sql = "select count(1) from user where username=? limit 1";
+		String sql = "select * from user where username=? limit 1";
 		long count = count(sql, username);
 		if(count > 0)
 			return true;
@@ -65,8 +65,8 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 
 	@Override
 	public List<User> findLikeUsername(String username) {
-		String sql = "select * from user where username like %?%";
-		List<User> users = query(sql, new UserMapper(), username);
+		String sql = "select * from user where username like '%"+username+"%'";
+		List<User> users = query(sql, new UserMapper());
 		return users;
 	}
 

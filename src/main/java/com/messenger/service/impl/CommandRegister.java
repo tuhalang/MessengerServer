@@ -29,12 +29,13 @@ public class CommandRegister implements Command{
 		try {
 			User user = mapper.readValue(content, User.class);
 			//validate user && check exist username
+			if (userDAO.isExist(user.getUsername())) System.out.println(1); else System.out.println(2);
 			if(isValid(user) && !userDAO.isExist(user.getUsername())) {
 				user.setEnabled(1);
 				userDAO.save(user);
 				osw = new OutputStreamWriter(socket.getOutputStream());
 				bw = new BufferedWriter(osw);
-				bw.write(mapper.writeValueAsString(user));
+				bw.write("2"+mapper.writeValueAsString(user));
 				bw.newLine();
 				bw.flush();
 
@@ -52,7 +53,6 @@ public class CommandRegister implements Command{
 			try {
 				Error error = new Error();
 				error.setCode("e");
-				//TODO set description for error
 				osw = new OutputStreamWriter(socket.getOutputStream());
 				bw = new BufferedWriter(osw);
 				bw.write("0"+mapper.writeValueAsString(error));
@@ -65,20 +65,6 @@ public class CommandRegister implements Command{
 			
 			logger.severe(e.getMessage());
 		} finally {
-//			if(osw != null) {
-//				try {
-//					osw.close();
-//				} catch (IOException e) {
-//					logger.severe(e.getMessage());
-//				}
-//			}
-//			if(bw != null) {
-//				try {
-//					bw.close();
-//				} catch (IOException e) {
-//					logger.severe(e.getMessage());
-//				}
-//			}
 		}
 		
 	}
@@ -88,9 +74,9 @@ public class CommandRegister implements Command{
 		if(user.getUsername() == null || user.getUsername().equalsIgnoreCase("")) {
 			return false;
 		}
-		if(!user.getPassword().matches("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")) {
-			return false;
-		}
+//		if(!user.getPassword().matches("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$")) {
+//			return false;
+//		}
 		if(user.getSex() != 0 && user.getSex() != 1) {
 			return false;
 		}
