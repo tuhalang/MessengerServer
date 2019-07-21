@@ -1,0 +1,18 @@
+Jul 21, 2019 8:33:57 PM com.messenger.controller.HomeController main
+INFO: Client excepted tvd -- Socket[addr=/127.0.0.1,port=52594,localport=3308]
+Jul 21, 2019 8:33:58 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=52594,localport=3308] is : 1{"userId":0,"username":"tvd","password":"123456","sex":0,"enabled":0}
+Jul 21, 2019 8:33:58 PM com.messenger.service.impl.CommandLogin excute
+INFO: send to user Socket[addr=/127.0.0.1,port=52594,localport=3308]: 1{"userId":3,"username":"tvd","password":"123456","sex":0,"enabled":1}
+Jul 21, 2019 8:33:58 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=52594,localport=3308] is : 5
+Jul 21, 2019 8:33:58 PM com.messenger.service.impl.CommandFindAll excute
+INFO: send to user Socket[addr=/127.0.0.1,port=52594,localport=3308]: 5[{"userId":1,"username":"hung","password":"123456","sex":0,"enabled":1},{"userId":2,"username":"123","password":"123456","sex":0,"enabled":1},{"userId":3,"username":"tvd","password":"123456","sex":0,"enabled":1}]
+Jul 21, 2019 8:34:02 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=52594,localport=3308] is : 4{"key":"123"}
+Jul 21, 2019 8:34:20 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=52594,localport=3308] is : 3{"messageId":0,"sourceId":3,"targetId":2,"icon":"","content":"abc","image":"","seen":0,"date":null}
+Jul 21, 2019 8:34:20 PM com.messenger.dao.impl.CommonDAOImpl insert
+SEVERE: No value specified for parameter 8
+Jul 21, 2019 8:34:20 PM com.messenger.dao.impl.CommonDAOImpl insert
+SEVERE: No value specified for parameter 8
