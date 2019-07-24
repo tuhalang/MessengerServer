@@ -1366,3 +1366,167 @@ Jul 20, 2019 12:30:48 AM com.messenger.service.impl.MessageServiceImpl handle
 INFO: code = 4
 Jul 20, 2019 12:32:50 AM com.messenger.controller.WorkerThread run
 SEVERE: Connection reset
+Jul 21, 2019 9:26:56 PM com.messenger.controller.HomeController main
+INFO: Binding to port: 3,308
+Jul 21, 2019 9:26:57 PM com.messenger.controller.HomeController main
+INFO: Server started: ServerSocket[addr=0.0.0.0/0.0.0.0,localport=3308]
+Jul 21, 2019 9:26:57 PM com.messenger.controller.HomeController main
+INFO: Waiting for client ...
+Jul 21, 2019 9:27:17 PM com.messenger.controller.HomeController main
+INFO: Client excepted hung -- Socket[addr=/127.0.0.1,port=31246,localport=3308]
+Jul 21, 2019 9:27:18 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 1{"userId":0,"username":"hung","password":"123456","sex":0,"enabled":0}
+Jul 21, 2019 9:27:18 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 1
+Jul 21, 2019 9:27:19 PM com.messenger.service.impl.CommandLogin excute
+INFO: send to user Socket[addr=/127.0.0.1,port=31246,localport=3308]: 1{"userId":1,"username":"hung","password":"123456","sex":1,"enabled":1}
+Jul 21, 2019 9:27:19 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 5
+Jul 21, 2019 9:27:19 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 5
+Jul 21, 2019 9:27:19 PM com.messenger.service.impl.CommandFindAll excute
+INFO: [{"userId":1,"username":"hung","password":"123456","sex":1,"enabled":1}, {"userId":2,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":1}, {"userId":3,"username":"tuhalang123","password":"Abcdef`12@","sex":0,"enabled":1}, {"userId":4,"username":"tuhalang1234","password":"Abcdef`12@","sex":0,"enabled":1}]
+Jul 21, 2019 9:27:38 PM com.messenger.controller.HomeController main
+INFO: Client excepted tuhalang -- Socket[addr=/127.0.0.1,port=31260,localport=3308]
+Jul 21, 2019 9:27:39 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 1{"userId":0,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":0}
+Jul 21, 2019 9:27:39 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 1
+Jul 21, 2019 9:27:39 PM com.messenger.service.impl.CommandLogin excute
+INFO: send to user Socket[addr=/127.0.0.1,port=31260,localport=3308]: 1{"userId":2,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":1}
+Jul 21, 2019 9:27:40 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 5
+Jul 21, 2019 9:27:40 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 5
+Jul 21, 2019 9:27:40 PM com.messenger.service.impl.CommandFindAll excute
+INFO: [{"userId":1,"username":"hung","password":"123456","sex":1,"enabled":1}, {"userId":2,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":1}, {"userId":3,"username":"tuhalang123","password":"Abcdef`12@","sex":0,"enabled":1}, {"userId":4,"username":"tuhalang1234","password":"Abcdef`12@","sex":0,"enabled":1}]
+Jul 21, 2019 9:27:59 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 3{"messageId":0,"sourceId":2,"targetId":1,"icon":"","content":"abcdef","image":"","seen":0,"date":null}
+Jul 21, 2019 9:27:59 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:27:59 PM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 21, 2019 9:27:59 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from tuhalang to hung
+Jul 21, 2019 9:28:04 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 3{"messageId":0,"sourceId":2,"targetId":1,"icon":"","content":"sdsadsad","image":"","seen":0,"date":null}
+Jul 21, 2019 9:28:04 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:28:04 PM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 21, 2019 9:28:04 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from tuhalang to hung
+Jul 21, 2019 9:28:06 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 3{"messageId":0,"sourceId":2,"targetId":1,"icon":"","content":"sadasdsa","image":"","seen":0,"date":null}
+Jul 21, 2019 9:28:06 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:28:06 PM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 21, 2019 9:28:06 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from tuhalang to hung
+Jul 21, 2019 9:28:08 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 3{"messageId":0,"sourceId":2,"targetId":1,"icon":"","content":"sadasd","image":"","seen":0,"date":null}
+Jul 21, 2019 9:28:08 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:28:08 PM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 21, 2019 9:28:08 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from tuhalang to hung
+Jul 21, 2019 9:28:10 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 3{"messageId":0,"sourceId":2,"targetId":1,"icon":"","content":"a","image":"","seen":0,"date":null}
+Jul 21, 2019 9:28:10 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:28:10 PM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 21, 2019 9:28:10 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from tuhalang to hung
+Jul 21, 2019 9:28:13 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 3{"messageId":0,"sourceId":2,"targetId":1,"icon":"","content":"b","image":"","seen":0,"date":null}
+Jul 21, 2019 9:28:13 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:28:13 PM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 21, 2019 9:28:13 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from tuhalang to hung
+Jul 21, 2019 9:29:32 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 3{"messageId":0,"sourceId":1,"targetId":2,"icon":"","content":"lol","image":"","seen":0,"date":null}
+Jul 21, 2019 9:29:32 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:29:32 PM com.messenger.service.impl.CommandMessage excute
+INFO: 2
+Jul 21, 2019 9:29:32 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from hung to tuhalang
+Jul 21, 2019 9:40:17 PM com.messenger.controller.HomeController main
+INFO: Client excepted tuhalang123 -- Socket[addr=/127.0.0.1,port=31588,localport=3308]
+Jul 21, 2019 9:40:18 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 1{"userId":0,"username":"tuhalang123","password":"Abcdef`12@","sex":0,"enabled":0}
+Jul 21, 2019 9:40:18 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 1
+Jul 21, 2019 9:40:18 PM com.messenger.service.impl.CommandLogin excute
+INFO: send to user Socket[addr=/127.0.0.1,port=31588,localport=3308]: 1{"userId":3,"username":"tuhalang123","password":"Abcdef`12@","sex":0,"enabled":1}
+Jul 21, 2019 9:40:18 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 5
+Jul 21, 2019 9:40:18 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 5
+Jul 21, 2019 9:40:18 PM com.messenger.service.impl.CommandFindAll excute
+INFO: [{"userId":1,"username":"hung","password":"123456","sex":1,"enabled":1}, {"userId":2,"username":"tuhalang","password":"Abcdef123@","sex":0,"enabled":1}, {"userId":3,"username":"tuhalang123","password":"Abcdef`12@","sex":0,"enabled":1}, {"userId":4,"username":"tuhalang1234","password":"Abcdef`12@","sex":0,"enabled":1}]
+Jul 21, 2019 9:40:22 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"tuhalang"}
+Jul 21, 2019 9:40:22 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:40:25 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 3{"messageId":0,"sourceId":3,"targetId":2,"icon":"","content":"he","image":"","seen":0,"date":null}
+Jul 21, 2019 9:40:25 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:40:25 PM com.messenger.service.impl.CommandMessage excute
+INFO: 3
+Jul 21, 2019 9:40:25 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from tuhalang123 to tuhalang
+Jul 21, 2019 9:40:36 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31260,localport=3308] is : 4{"key":"tuhalang123"}
+Jul 21, 2019 9:40:36 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:40:54 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 4{"key":"tuhalang123"}
+Jul 21, 2019 9:40:54 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:40:58 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 3{"messageId":0,"sourceId":1,"targetId":3,"icon":"","content":"ccc","image":"","seen":0,"date":null}
+Jul 21, 2019 9:40:58 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:40:58 PM com.messenger.service.impl.CommandMessage excute
+INFO: 3
+Jul 21, 2019 9:40:58 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from hung to tuhalang123
+Jul 21, 2019 9:41:02 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"hung"}
+Jul 21, 2019 9:41:02 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:14 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 4{"key":"tuhalang123"}
+Jul 21, 2019 9:41:14 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:20 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 3{"messageId":0,"sourceId":1,"targetId":3,"icon":"","content":"mmm","image":"","seen":0,"date":null}
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.CommandMessage excute
+INFO: 3
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from hung to tuhalang123
+Jul 21, 2019 9:41:20 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"tuhalang"}
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:31 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"hung"}
+Jul 21, 2019 9:41:31 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:37 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"tuhalang"}
+Jul 21, 2019 9:41:37 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:47 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 4{"key":"tuhalang"}
+Jul 21, 2019 9:41:47 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
