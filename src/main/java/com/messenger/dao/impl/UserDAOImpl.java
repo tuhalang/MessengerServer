@@ -12,7 +12,9 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 	@Override
 	public long save(User user) {
 		String sql = "insert into user(username, password, sex, enabled) value(?,?,?,?)";
-		return insert(sql, user.getUsername(), user.getPassword(), user.getSex(), user.getEnabled());
+		long id = insert(sql, user.getUsername(), user.getPassword(), user.getSex(), user.getEnabled());
+		user.setUserId(id);
+		return id;
 	}
 
 	@Override
@@ -65,8 +67,8 @@ public class UserDAOImpl extends CommonDAOImpl<User> implements UserDAO{
 
 	@Override
 	public List<User> findLikeUsername(String username) {
-		String sql = "select * from user where username like %?%";
-		List<User> users = query(sql, new UserMapper(), username);
+		String sql = "select * from user where username like ?";
+		List<User> users = query(sql, new UserMapper(), "%"+username+"%");
 		return users;
 	}
 

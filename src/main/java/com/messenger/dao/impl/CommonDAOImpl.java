@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -290,6 +291,8 @@ public class CommonDAOImpl<T> implements CommonDAO<T> {
 					statement.setInt(index, (Integer) parameter);
 				} else if (parameter instanceof Timestamp) {
 					statement.setTimestamp(index, (Timestamp) parameter);
+				} else if (parameter instanceof Date) {
+					statement.setTimestamp(index, new Timestamp(((Date) parameter).getTime()));
 				}
 			}
 		} catch (SQLException e) {

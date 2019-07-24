@@ -35,6 +35,8 @@ public class CommandMessage implements Command{
 		try {
 			Message message= mapper.readValue(content, Message.class);
 			messageDAO.save(message);
+			message.setSeen(0);
+			User sourceUser = userDAO.findById(message.getSourceId());
 			User targetUser = userDAO.findById(message.getTargetId());
 			
 			//if user is not enabled then message will be not sent
@@ -54,19 +56,26 @@ public class CommandMessage implements Command{
 				return;
 			}
 			
-			message.setSeen(0);
-			messageDAO.save(message);
 			
+			logger.info(HomeController.users.size()+"");
 			if(HomeController.users.containsKey(targetUser.getUsername())) {
 				Socket client = HomeController.users.get(targetUser.getUsername()).getSocket();
-				osw = new OutputStreamWriter(client.getOutputStream());
-				bw = new BufferedWriter(osw);
-				bw.write("1"+mapper.writeValueAsString(message));
-				bw.newLine();
-				bw.flush();
-				message.setSeen(1);
-				messageDAO.update(message);
+				if(client.isConnected()) {
+					osw = new OutputStreamWriter(client.getOutputStream());
+					bw = new BufferedWriter(osw);
+					bw.write("3"+mapper.writeValueAsString(message));
+					bw.newLine();
+					bw.flush();
+					message.setSeen(1);
+					messageDAO.update(message);
+					logger.info("sent message from " + sourceUser.getUsername() + " to " + targetUser.getUsername());
+				}
 			}
+			osw = new OutputStreamWriter(socket.getOutputStream());
+			bw = new BufferedWriter(osw);
+			bw.write("3"+mapper.writeValueAsString(message));
+			bw.newLine();
+			bw.flush();
 			
 		} catch (IOException e) {
 			
@@ -85,20 +94,20 @@ public class CommandMessage implements Command{
 			
 			logger.severe(e.getMessage());
 		} finally {
-			if(osw != null) {
-				try {
-					osw.close();
-				} catch (IOException e) {
-					logger.log(Level.SEVERE,e.getMessage());
-				}
-			}
-			if(bw != null) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					logger.log(Level.SEVERE,e.getMessage());
-				}
-			}
+//			if(osw != null) {
+//				try {
+//					osw.close();
+//				} catch (IOException e) {
+//					logger.log(Level.SEVERE,e.getMessage());
+//				}
+//			}
+//			if(bw != null) {
+//				try {
+//					bw.close();
+//				} catch (IOException e) {
+//					logger.log(Level.SEVERE,e.getMessage());
+//				}
+//			}
 		}
 	}
 

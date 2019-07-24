@@ -38,8 +38,9 @@ public class WorkerThread extends Thread {
 				}
 				while(!messages.isEmpty()) {
 					logger.info("message from " + socket + " is : " + messages.peek());
-					messageService.handle(socket, messages.pop());
+					messageService.handle(socket, messages.poll());
 				}
+				
 			}
 		} catch (IOException e) {
 			logger.severe(e.getLocalizedMessage());

@@ -1,7 +1,6 @@
 package com.messenger.service.impl;
 
 import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
@@ -11,9 +10,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.messenger.dao.UserDAO;
 import com.messenger.dao.impl.UserDAOImpl;
 import com.messenger.logger.Logging;
+import com.messenger.model.Error;
 import com.messenger.model.User;
 import com.messenger.service.Command;
-import com.messenger.model.Error;
 
 public class CommandLogin implements Command{
 
@@ -35,6 +34,7 @@ public class CommandLogin implements Command{
 				bw.write("1"+mapper.writeValueAsString(user));
 				bw.newLine();
 				bw.flush();
+				logger.info("send to user " + socket + ": " + "1"+mapper.writeValueAsString(user));
 			}
 			else {
 				Error error = new Error();
@@ -63,20 +63,20 @@ public class CommandLogin implements Command{
 			
 			logger.severe(e.getMessage());
 		} finally {
-			if(osw != null) {
-				try {
-					osw.close();
-				} catch (IOException e) {
-					logger.severe(e.getMessage());
-				}
-			}
-			if(bw != null) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					logger.severe(e.getMessage());
-				}
-			}
+//			if(osw != null) {
+//				try {
+//					osw.close();
+//				} catch (IOException e) {
+//					logger.severe(e.getMessage());
+//				}
+//			}
+//			if(bw != null) {
+//				try {
+//					bw.close();
+//				} catch (IOException e) {
+//					logger.severe(e.getMessage());
+//				}
+//			}
 		}
 	}
 	

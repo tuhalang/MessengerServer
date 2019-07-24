@@ -34,7 +34,7 @@ public class CommandRegister implements Command{
 				userDAO.save(user);
 				osw = new OutputStreamWriter(socket.getOutputStream());
 				bw = new BufferedWriter(osw);
-				bw.write(mapper.writeValueAsString(user));
+				bw.write("2"+mapper.writeValueAsString(user));
 				bw.newLine();
 				bw.flush();
 
@@ -65,20 +65,20 @@ public class CommandRegister implements Command{
 			
 			logger.severe(e.getMessage());
 		} finally {
-			if(osw != null) {
-				try {
-					osw.close();
-				} catch (IOException e) {
-					logger.severe(e.getMessage());
-				}
-			}
-			if(bw != null) {
-				try {
-					bw.close();
-				} catch (IOException e) {
-					logger.severe(e.getMessage());
-				}
-			}
+//			if(osw != null) {
+//				try {
+//					osw.close();
+//				} catch (IOException e) {
+//					logger.severe(e.getMessage());
+//				}
+//			}
+//			if(bw != null) {
+//				try {
+//					bw.close();
+//				} catch (IOException e) {
+//					logger.severe(e.getMessage());
+//				}
+//			}
 		}
 		
 	}

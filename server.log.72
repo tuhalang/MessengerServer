@@ -1,0 +1,34 @@
+Jul 21, 2019 9:40:58 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from hung to tuhalang123
+Jul 21, 2019 9:41:02 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"hung"}
+Jul 21, 2019 9:41:02 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:14 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 4{"key":"tuhalang123"}
+Jul 21, 2019 9:41:14 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:20 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 3{"messageId":0,"sourceId":1,"targetId":3,"icon":"","content":"mmm","image":"","seen":0,"date":null}
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 3
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.CommandMessage excute
+INFO: 3
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.CommandMessage excute
+INFO: sent message from hung to tuhalang123
+Jul 21, 2019 9:41:20 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"tuhalang"}
+Jul 21, 2019 9:41:20 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:31 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"hung"}
+Jul 21, 2019 9:41:31 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:37 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31588,localport=3308] is : 4{"key":"tuhalang"}
+Jul 21, 2019 9:41:37 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4
+Jul 21, 2019 9:41:47 PM com.messenger.controller.WorkerThread run
+INFO: message from Socket[addr=/127.0.0.1,port=31246,localport=3308] is : 4{"key":"tuhalang"}
+Jul 21, 2019 9:41:47 PM com.messenger.service.impl.MessageServiceImpl handle
+INFO: code = 4

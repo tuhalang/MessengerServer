@@ -1,7 +1,6 @@
 package com.messenger.service.impl;
 
 import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
@@ -17,10 +16,10 @@ import com.messenger.model.Key;
 import com.messenger.model.User;
 import com.messenger.service.Command;
 
-public class CommandSearch implements Command{
-	
-	private static Logger logger = Logging.getLogger();
+public class CommandFindAll implements Command{
 
+	private static Logger logger = Logging.getLogger();
+	
 	@Override
 	public void excute(Socket socket, String content) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -28,11 +27,12 @@ public class CommandSearch implements Command{
 		BufferedWriter bw = null;
 		OutputStreamWriter osw = null;
 		try {
-			Key key = mapper.readValue(content, Key.class);
-			List<User> users = userDAO.findLikeUsername(key.getKey());
+			
+			List<User> users = userDAO.findAll();
+			logger.info(users.toString());
 			osw = new OutputStreamWriter(socket.getOutputStream());
 			bw = new BufferedWriter(osw);
-			bw.write("4"+mapper.writeValueAsString(users));
+			bw.write("5"+mapper.writeValueAsString(users));
 			bw.newLine();
 			bw.flush();
 		} catch (IOException e) {
@@ -50,23 +50,7 @@ public class CommandSearch implements Command{
 			}
 			
 			logger.severe(e.getMessage());
-		} finally {
-//			if(osw != null) {
-//				try {
-//					osw.close();
-//				} catch (IOException e) {
-//					logger.severe(e.getMessage());
-//				}
-//			}
-//			if(bw != null) {
-//				try {
-//					bw.close();
-//				} catch (IOException e) {
-//					logger.severe(e.getMessage());
-//				}
-//			}
 		}
-		
 		
 	}
 
